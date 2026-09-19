@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<TriggernometryExport PluginVersion="1.2.0.7">
+  <ExportedFolder FfxivZoneFilterRegularExpression="^1238$" Id="2d6d35b9-0582-4cba-a789-4fb5f6a3da28" Name="OBS" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Name="Stop Recording" Id="cfaf4ab3-a962-4820-962c-a5198ae6fbc3" RegularExpression="has ended.">
+        <Actions>
+          <Action OrderNumber="1" OBSControlType="StopRecording" OBSEndPoint="ws://localhost:4455" OBSPassword="AZ2P7Jki6cudNEhI" SoundRouting="None" TTSRouting="None" ActionType="ObsControl">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="Start Recording" Id="3ef5601d-f1a2-4ba0-bee7-2e088c638fea" RegularExpression="Duty pop:">
+        <Actions>
+          <Action OrderNumber="1" OBSControlType="StartRecording" OBSEndPoint="ws://localhost:4455" OBSPassword="AZ2P7Jki6cudNEhI" SoundRouting="None" TTSRouting="None" ActionType="ObsControl">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="Reset pulls" Id="6611fb9f-7744-477b-b3bc-6f2770987bc8" RegularExpression="reset counter">
+        <Actions>
+          <Action OrderNumber="1" SoundRouting="None" TTSRouting="None" VariableOp="SetNumeric" VariableName="chaptercounter" VariableExpression="${var:chaptercounter}=0" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="Create pull chapter marker" Id="39739778-c108-4ddb-bced-75622e633831" RegularExpression="260 104:\d:1:\d:1">
+        <Actions>
+          <Action OrderNumber="1" SoundRouting="None" TTSRouting="None" VariableOp="SetNumeric" VariableName="chaptercounter" VariableExpression="${var:chaptercounter}+1" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" OBSControlType="JSONPayload" OBSEndPoint="ws://localhost:4455" OBSPassword="AZ2P7Jki6cudNEhI" OBSJSONPayload="{&#xD;&#xA;  &quot;op&quot;: 6,&#xD;&#xA;  &quot;d&quot;: {&#xD;&#xA;    &quot;requestType&quot;: &quot;CreateRecordChapter&quot;,&#xD;&#xA;    &quot;requestId&quot;: &quot;trig-chapter&quot;,&#xD;&#xA;    &quot;requestData&quot;: {&#xD;&#xA;      &quot;chapterName&quot;: &quot;Pull ${var:chaptercounter}&quot;&#xD;&#xA;    }&#xD;&#xA;  }&#xD;&#xA;}" SoundRouting="None" TTSRouting="None" ActionType="ObsControl" Asynchronous="False">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
