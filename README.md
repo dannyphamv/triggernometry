@@ -8,6 +8,7 @@
 - Stop Recording on Duty End
 - Create Pull Chapter Markers on Boss Engagement **(must use Hybrid MP4 format in OBS)**
 - (Optional) Reset Pull Chapter Marker Counter
+    - Type "reset counter" in any chat to reset pull counter
 
 **How To Use**
 
