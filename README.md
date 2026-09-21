@@ -6,7 +6,7 @@
 
 - Start Recording on Duty Pop
 - Stop Recording on Duty End
-- Create Pull Chapter Markers on Boss Engagement
+- Create Pull Chapter Markers on Boss Engagement **(must use Hybrid MP4 format in OBS)**
 - (Optional) Reset Pull Chapter Marker Counter
 
 **How To Use**
